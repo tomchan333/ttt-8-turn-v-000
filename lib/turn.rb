@@ -26,10 +26,14 @@ end
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
-  input_to_index(input)
-  valid_move?(board, input)
-  move(board, input)
-
+  input = input_to_index(input)
+  if valid_move?(board, input)
+      move(board, input)
+      display_board(board)
+    else
+      puts "That is an invalid entry!"
+      turn(board)
+  end 
 end
 
 def position_taken? (board, index)
